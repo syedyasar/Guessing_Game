@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+   
+  </head>
+
+  <body onload="Game();">
+     
+    <script>
+        
+  var target_number;
+  var guess_number;
+  var guess_number_text;
+  var guesses=0;
+ 
+  var finished=false;
+        
+  function Game(){
+  
+  var random_number=Math.random()*100;
+  var random_number_integer=Math.floor(random_number);
+  target_number= random_number_integer + 1;
+  
+  while(!finished)
+  {
+  guess_number_text=prompt("Please enter the number in the Range of 1 to 100");
+  guess_number=parseInt(guess_number_text);
+  guesses+=1;
+  
+  // alert("You Entered " + guess_number);
+  
+  finished=guess();
+  }
+  
+    }
+  
+  function guess(){
+    if(isNaN(guess_number))
+    {alert("Please Enter a Number. You haven't entered a number.");
+    return false;}
+    
+    else if(guess_number<1 || guess_number>100)
+    {alert("Please Enter a Number in the range 01 to 100");
+      return false;
+    }
+    
+    else if(guess_number<target_number)
+    {alert("Number too Low");
+      return false;
+    }
+    
+    else if(guess_number>target_number)
+    {alert("Number too High");
+      return false;
+    }
+    else if(guess_number==target_number)
+    {alert("Congratulations!.You made it. You did it in "+  guesses + " attempts");
+   return true; 
+    }
+    
+  }
+ 
+  
+  
+
+   </script>
+    
+  </body>
+
+</html>

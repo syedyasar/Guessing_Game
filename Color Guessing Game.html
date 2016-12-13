@@ -1,0 +1,94 @@
+   <!DOCTYPE html>
+<html>
+
+<head>
+<title>Color Guessing Game</title>
+  
+  <script>
+      
+  var color=["blue","cyan","gold","gray","green","magenta","orange","red","white","yellow"]
+  var target_color_index;
+  var target_color;
+  var guesses=0;
+  var finished=false;
+      
+ 
+//      Body_color.style.background=#0033cc
+        
+  function Game(){
+      
+      
+      var target_color_index=Math.floor(Math.random()*color.length);
+      color_prompt= color.join(",");
+      target_color=color[target_color_index];
+//      alert(target_color);
+           
+  while(!finished)
+  {
+      
+        var guess_color_text;
+        var guess_color_index;
+
+      guess_color_text=prompt("I am thinking of one of these colors:\n\n"+color_prompt+"\n\n What color am I thinking of?");
+      guesses+=1;
+      guess_color_index=color.indexOf(guess_color_text);
+      
+      
+// alert("guess color index  is "+guess_color_index);
+
+ // alert(" color Array  is "+color_prompt);
+      
+  finished=color_guess_code(target_color_index,guess_color_index);
+  }
+      
+       }
+  
+  
+  function color_guess_code(target_index,guess_index){
+      var target_index;
+      var guess_index;
+      var target_color=color[target_index];
+      
+    if(guess_index==-1)
+    {alert("Sorry I don't recognize your color.\n\n Please try again");
+    return false;
+    }
+    
+    else if(guess_index>target_index)
+    {alert("Sorry, your guess is not correct!\n\n Hint:your color is alphabetically higher than mine.\n\nPlease try again.");
+      return false;
+    }
+    
+     else if(guess_index<target_index)
+    {alert("Sorry, your guess is not correct!\n\n Hint:your color is alphabetically lower than mine.\n\nPlease try again.");
+      return false;
+    }
+    
+        
+      else if(guess_index==target_index)
+    {     
+        
+      var Body_color = document.getElementsByTagName("body")[0];
+        
+        Body_color.style.background =target_color; 
+ 
+        alert("Congratulations! You have guessed the color! \n\n It took you " +guesses+ " guesses to finish the game!\n\n You can see the color in the background.");
+        
+
+   return true; 
+    }
+    
+  }
+  
+    </script>
+  
+  </head>
+
+  <body onload="Game();" >
+      
+  </body>
+
+</html>   
+ 
+  
+  
